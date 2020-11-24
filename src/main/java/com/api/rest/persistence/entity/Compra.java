@@ -29,9 +29,24 @@ public class Compra {
     @JoinColumn(name = "id_usuario", insertable = false,updatable = false)
     private Usuario usuario;
 
-    @OneToMany(mappedBy = "producto")
+    @OneToMany(mappedBy = "producto", cascade = {CascadeType.ALL})
     private List<ComprasProducto> productos;
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public List<ComprasProducto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<ComprasProducto> productos) {
+        this.productos = productos;
+    }
 
     //Getters and Setters
     public Integer getIdCompra() {

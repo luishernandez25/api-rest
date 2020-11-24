@@ -22,7 +22,7 @@ public class ProductService {
         return productRepository.getProduct(productId);
     }
 
-    public Optional <List<Product>> getByTecnology (int tecnologyId){
+    public Optional<List<Product>> getByTecnology (int tecnologyId){
         return productRepository.getByTecnology(tecnologyId);
     }
 
