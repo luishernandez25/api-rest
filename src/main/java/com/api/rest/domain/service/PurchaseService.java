@@ -1,13 +1,14 @@
 package com.api.rest.domain.service;
 
-import com.api.rest.domain.Product;
 import com.api.rest.domain.Purchase;
 import com.api.rest.domain.repository.PurchaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class PurchaseService {
 
     @Autowired
@@ -17,8 +18,8 @@ public class PurchaseService {
         return purchaseRepository.getAll();
     }
 
-    public Optional<List<Purchase>> getByUser(String userid){
-        return purchaseRepository.getByUser(userid);
+    public Optional<List<Purchase>> getByUser(String userId){
+        return purchaseRepository.getByUser(userId);
     }
 
     public Purchase save (Purchase purchase){

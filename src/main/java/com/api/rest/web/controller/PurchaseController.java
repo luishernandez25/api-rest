@@ -31,8 +31,8 @@ public class PurchaseController {
 
     */
 
-    @GetMapping("/userId")
-    public ResponseEntity<List<Purchase>> getPurchase(@PathVariable("id") String userId) {
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<Purchase>> getPurchase(@PathVariable("userId") String userId) {
         return purchaseService.getByUser(userId).
                 map(purchases -> new ResponseEntity<>(purchases, HttpStatus.OK)).
                 orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
@@ -43,9 +43,10 @@ public class PurchaseController {
           Metodo para realizar una compra
 
     */
-    @PostMapping ("/done")
-    public ResponseEntity <Purchase> buyDone (@RequestBody Purchase purchase){
+    @PostMapping ("/save")
+    public ResponseEntity <Purchase> save (@RequestBody Purchase purchase){
         return new ResponseEntity<>(purchaseService.save(purchase),HttpStatus.CREATED);
+
 
     }
 }

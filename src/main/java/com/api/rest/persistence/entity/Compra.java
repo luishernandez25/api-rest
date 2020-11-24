@@ -29,7 +29,7 @@ public class Compra {
     @JoinColumn(name = "id_usuario", insertable = false,updatable = false)
     private Usuario usuario;
 
-    @OneToMany(mappedBy = "producto", cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "compra", cascade = {CascadeType.ALL})
     private List<ComprasProducto> productos;
 
     public Usuario getUsuario() {
@@ -96,4 +96,6 @@ public class Compra {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    
 }

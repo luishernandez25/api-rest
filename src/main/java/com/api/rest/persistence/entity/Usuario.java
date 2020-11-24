@@ -17,7 +17,7 @@ public class Usuario {
     private String apellidos;
 
     @Column(name = "num_telefonico")
-    private Integer numTelefonico;
+    private Long numTelefonico;
 
     private String direccion;
 
@@ -61,11 +61,11 @@ public class Usuario {
         this.apellidos = apellidos;
     }
 
-    public Integer getNumTelefonico() {
+    public Long getNumTelefonico() {
         return numTelefonico;
     }
 
-    public void setNumTelefonico(Integer numTelefonico) {
+    public void setNumTelefonico(Long numTelefonico) {
         this.numTelefonico = numTelefonico;
     }
 
