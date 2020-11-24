@@ -3,6 +3,10 @@ package com.api.rest.web.controller;
 import com.api.rest.domain.Product;
 import com.api.rest.domain.Tecnology;
 import com.api.rest.domain.service.ProductService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,12 +24,20 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("/all")
+    @ApiOperation("Obtener todos los productos de nuestra web")
+    @ApiResponse(code= 200, message = "OK")
     public ResponseEntity<List<Product>> getAll() {
         return new ResponseEntity<>(productService.getAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProduct(@PathVariable("id") int productId) {
+    @ApiOperation("Busca los productos por el ID")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 404, message = "Producto no existente")
+
+    })
+    public ResponseEntity<Product> getProduct(@ApiParam(value = "El id del producto",required = true,example = "2") @PathVariable("id") int productId) {
         return productService.getProduct(productId).
                 map(products -> new ResponseEntity<>(products, HttpStatus.OK)).
                 orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
