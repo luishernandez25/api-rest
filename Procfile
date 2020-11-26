@@ -1,0 +1,1 @@
+web: java -jar -Dspring.profiles.active=prod build/libs/api-place-1.0.jar
