@@ -42,19 +42,31 @@ public class ProductController {
                 map(products -> new ResponseEntity<>(products, HttpStatus.OK)).
                 orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-
+    @ApiOperation("Obtiene las tecnologias disponibles")
+    @ApiResponses({
+            @ApiResponse(code = 200 ,message ="OK"),
+            @ApiResponse(code = 404 ,message ="Tecnologia no existente en nuestra plataforma")
+    })
     @GetMapping("/tecnology/{tecnologyId}")
     public ResponseEntity<List<Product>> getByTecnology(@PathVariable("tecnologyId") int tecnologyId) {
         return productService.getByTecnology(tecnologyId).filter(Predicate.not(List::isEmpty))
                 .map(products -> new ResponseEntity<>(products, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(null,HttpStatus.NOT_FOUND));
     }
+    @ApiOperation("Inyecta un nuevo producto y su tecnologia")
+    @ApiResponses({
+            @ApiResponse(code = 200 ,message ="OK"),
 
+    })
     @PostMapping("/post")
     public ResponseEntity<Product> save(@RequestBody Product product) {
         return new ResponseEntity<>(productService.save(product), HttpStatus.CREATED);
     }
+    @ApiOperation("Borrar productos")
+    @ApiResponses({
+            @ApiResponse(code = 200 ,message ="OK"),
 
+    })
     @DeleteMapping("/delete/{id}")
     public ResponseEntity delete(@PathVariable("id") int productId) {
         if (productService.delete(productId)) {

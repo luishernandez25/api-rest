@@ -5,12 +5,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table (name= "compras")
+@Table(name = "compras")
 public class Compra {
 
-    @Column(name= "id_compra")
+    @Column(name = "id_compra")
     @Id
-    @GeneratedValue(strategy =GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idCompra;
 
     @Column(name = "id_usuario")
@@ -18,7 +18,7 @@ public class Compra {
 
     private LocalDateTime fecha;
 
-    @Column(name="medio_pago")
+    @Column(name = "medio_pago")
     private String medioPago;
 
     private String comentario;
@@ -26,7 +26,7 @@ public class Compra {
     private String estado;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario", insertable = false,updatable = false)
+    @JoinColumn(name = "id_usuario", insertable = false, updatable = false)
     private Usuario usuario;
 
     @OneToMany(mappedBy = "compra", cascade = {CascadeType.ALL})
@@ -97,5 +97,5 @@ public class Compra {
         this.estado = estado;
     }
 
-    
+
 }
