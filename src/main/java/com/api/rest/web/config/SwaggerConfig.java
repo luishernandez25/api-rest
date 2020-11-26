@@ -24,7 +24,7 @@ public class SwaggerConfig {
     }
 
     private ApiInfo apiEndInfo (){
-        return  new ApiInfoBuilder().title("Api Rest By Luis Hernandez")
+        return  new ApiInfoBuilder().title("Api Rest By Lhz")
                 .description("Desarrollo de API para aplicacion web de cursos online, Para su uso debes primero invocar el auth-controller el cual te devolvera un token para poder interactuar con las demas apis")
                 .license("Apache 2.0")
                 .version("1.0.0")
