@@ -12,14 +12,15 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {UserMapper.class})
+@Mapper(componentModel = "spring")
 public interface UserMapper {
 
     @Mappings({
 
-            @Mapping(source = "id",target ="userId"),
+            @Mapping(source = "idUsuario",target ="userId"),
             @Mapping(source = "password",target ="password"),
-
+            @Mapping(source = "nombre",target ="name"),
+            @Mapping(source = "correoElectronico",target ="email"),
 
     })
     User toUser (Usuario usuario);
@@ -27,5 +28,5 @@ public interface UserMapper {
 
     @InheritInverseConfiguration
     @Mapping(target = "apellidos", ignore = true)
-    Usuario toUser (User user);
+    Usuario toUsuario (User user);
 }

@@ -1,6 +1,4 @@
 package com.api.rest.persistence;
-
-
 import com.api.rest.domain.User;
 import com.api.rest.domain.repository.UserRepository;
 import com.api.rest.persistence.crud.UsuarioCrudRepository;
@@ -24,21 +22,25 @@ public class UsuarioRepository implements UserRepository {
 
     @Override
     public List<User> getAll(){
-        List <Usuario> usuarios = (List<Usuario>) usuarioCrudRepository.findAll();
-        return mapper.toUsers(usuarios);
+          return mapper.toUsers((List<Usuario>)usuarioCrudRepository.findAll());
 
 
     }
 
     @Override
-    public Optional<List<User>> getByUser(String id) {
-        List<Usuario> usuarios = usuarioCrudRepository.findByidOrderByNombreAsc(id);
-        return Optional.of(mapper.toUsers(usuarios));
+    public Optional<List<User>> getByUserId(String userId){
+        return usuarioCrudRepository.findByNombre(userId)
+                .map(usuarios -> mapper.toUsers(usuarios));
+
+
     }
+
+
 
     @Override
     public User save(User user) {
-        Usuario usuario = mapper.toUser(user);
+
+        Usuario usuario = mapper.toUsuario(user);
         return mapper.toUser(usuarioCrudRepository.save(usuario));
     }
 }

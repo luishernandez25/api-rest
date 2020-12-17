@@ -7,8 +7,10 @@ import java.util.List;
 @Table(name = "usuarios")
 public class Usuario {
 
+    @Column(name="id")
     @Id
-    private String id;
+    private String idUsuario;
+
 
 
     private String password;
@@ -30,12 +32,12 @@ public class Usuario {
 
 
     //G&S
-    public String getId() {
-        return id;
+    public String getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdUsuario(String idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public String getPassword() {

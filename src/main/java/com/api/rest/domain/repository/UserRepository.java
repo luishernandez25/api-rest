@@ -9,6 +9,6 @@ import java.util.Optional;
 public interface UserRepository {
 
     List<User> getAll();
-    Optional<List<User>> getByUser(String userId);
+    Optional<List<User>> getByUserId(String userId);
     User save(User user);
 }

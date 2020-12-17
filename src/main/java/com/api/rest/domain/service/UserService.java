@@ -16,7 +16,9 @@ public class UserService {
     private UserRepository userRepository;
 
     public List<User> getAll (){return userRepository.getAll();}
-    public Optional<List<User>> getByUser (String userId){return userRepository.getByUser(userId);}
+    public Optional<List<User>> getByUser (String userId){
+        return userRepository.getByUserId(userId);
+    }
 
     public User save (User user){return userRepository.save(user);}
 
