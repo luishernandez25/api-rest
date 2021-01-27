@@ -27,7 +27,7 @@ public class UserController {
     @ApiOperation("Obtener la lista de usuarios")
     @ApiResponse(code= 200, message = "OK")
     @GetMapping("/all")
-    public ResponseEntity <List<User>> getAll(){
+    public ResponseEntity <List<User>> todos(){
         return new ResponseEntity<>(userService.getAll(), HttpStatus.OK);
 
 
@@ -35,7 +35,7 @@ public class UserController {
     @ApiOperation("Obtener un usuario por input")
     @ApiResponse(code= 200, message = "OK")
     @GetMapping("/userApp/{userId}")
-    public ResponseEntity<List <User>> getUser(@PathVariable("userId")String userId){
+    public ResponseEntity<List <User>> obtener(@PathVariable("userId")String userId){
         return userService.getByUser(userId).map(users -> new ResponseEntity<>(users, HttpStatus.OK)).
                 orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -43,7 +43,7 @@ public class UserController {
     @ApiOperation("Crear un usuario")
     @ApiResponse(code= 200, message = "OK")
     @PostMapping("/save")
-    public ResponseEntity <User> save (@RequestBody User user){
+    public ResponseEntity <User> hola (@RequestBody User user){
         return new ResponseEntity<>(userService.save(user),HttpStatus.CREATED);
 
 
